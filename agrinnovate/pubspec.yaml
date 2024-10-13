@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter_pdfview: ^1.2.7
   firebase_database: ^10.4.8
-  syncfusion_flutter_pdfviewer: ^22.2.8
+  syncfusion_flutter_pdfviewer: ^24.2.8
   pdfx: ^2.6.0
   flutter:
     sdk: flutter
@@ -55,7 +55,7 @@ dependencies:
   google_sign_in_ios: 5.6.4
   google_sign_in_platform_interface: 2.4.2
   google_sign_in_web: 0.12.1
-  intl: 0.18.1
+  intl: 0.19.0
   json_path: 0.6.2
   page_transition: 2.1.0
   path_provider: 2.0.14
@@ -80,6 +80,7 @@ dependencies:
   url_launcher_android: 6.3.0
   url_launcher_ios: 6.2.5
   url_launcher_platform_interface: 2.3.2
+  win32: ^5.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
