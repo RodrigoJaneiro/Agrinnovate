@@ -1,0 +1,1 @@
+ C:\\agrinnovate\\agrinnovate\\.dart_tool\\flutter_build\\e3ce5901c393bea24446a4588569dab3\\native_assets.yaml: 

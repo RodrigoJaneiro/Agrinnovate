@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">711371671856</string>
+    <string name="google_api_key" translatable="false">AIzaSyCO4suwcbPgmSYyVmecMgpm9NZUhDV-J9U</string>
+    <string name="google_app_id" translatable="false">1:711371671856:android:97dc38227bc570a92360f5</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCO4suwcbPgmSYyVmecMgpm9NZUhDV-J9U</string>
+    <string name="google_storage_bucket" translatable="false">agrinnovate-d31ea.appspot.com</string>
+    <string name="project_id" translatable="false">agrinnovate-d31ea</string>
+</resources>
