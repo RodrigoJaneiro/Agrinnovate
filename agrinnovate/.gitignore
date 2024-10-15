@@ -22,7 +22,7 @@ ios/Flutter/Generated.xcconfig
 
 # Android-specific files
 .android/
-app/build/
+App/build/
 
 # Web-specific files (caso o projeto seja multi-plataforma e suporte web)
 web/.dart_tool/
