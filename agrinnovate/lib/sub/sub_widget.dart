@@ -63,7 +63,7 @@ class _SubWidgetState extends State<SubWidget> {
               context.safePop();
             },
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 0,
         ),
@@ -74,7 +74,7 @@ class _SubWidgetState extends State<SubWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
                 child: Text(
                   'Subscrição',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -85,7 +85,7 @@ class _SubWidgetState extends State<SubWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
                 child: Text(
                   'A tua subscrição',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -95,12 +95,12 @@ class _SubWidgetState extends State<SubWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 5,
                         color: Color(0x34111417),
@@ -113,7 +113,7 @@ class _SubWidgetState extends State<SubWidget> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -126,7 +126,7 @@ class _SubWidgetState extends State<SubWidget> {
                                 borderRadius: BorderRadius.circular(25),
                               ),
                             ),
-                            unselectedWidgetColor: Color(0xFF95A1AC),
+                            unselectedWidgetColor: const Color(0xFF95A1AC),
                           ),
                           child: CheckboxListTile(
                             value: _model.checkboxListTileValue1 ??= true,
@@ -156,16 +156,18 @@ class _SubWidgetState extends State<SubWidget> {
                             ),
                             tileColor:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            activeColor: Color(0xFF69CC57),
+                            activeColor: const Color(0xFF69CC57),
                             checkColor: Colors.white,
                             dense: false,
                             controlAffinity: ListTileControlAffinity.trailing,
                             contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                                const EdgeInsetsDirectional.fromSTEB(
+                                    12, 0, 12, 0),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(12, 0, 24, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              12, 0, 24, 0),
                           child: Text(
                             'Obtenha acesso ilimitado a todos os conteúdos que temos para oferecer! ',
                             style: FlutterFlowTheme.of(context)
@@ -182,9 +184,9 @@ class _SubWidgetState extends State<SubWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, 0),
+                alignment: const AlignmentDirectional(0, 0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 370, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 370, 0, 0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
@@ -192,7 +194,7 @@ class _SubWidgetState extends State<SubWidget> {
                       width: 200,
                       height: 200,
                       fit: BoxFit.fitWidth,
-                      alignment: Alignment(1, 0),
+                      alignment: const Alignment(1, 0),
                     ),
                   ),
                 ),

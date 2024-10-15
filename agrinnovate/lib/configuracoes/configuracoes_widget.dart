@@ -59,7 +59,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MenuWidget(),
+                builder: (context) => const MenuWidget(),
               ),
             );
           },
@@ -67,12 +67,12 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MenuWidget(),
+                builder: (context) => const MenuWidget(),
               ),
             );
           },
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0,
       ),
@@ -81,7 +81,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
             child: Text(
               'Configurações',
               style: FlutterFlowTheme.of(context).headlineSmall.override(
@@ -98,12 +98,12 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
             scrollDirection: Axis.vertical,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -113,7 +113,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SubWidget(),
+                            builder: (context) => const SubWidget(),
                           ),
                         );
                       },
@@ -142,26 +142,26 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,12 +185,12 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,12 +214,12 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -245,7 +245,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 30, 0, 8),
+            padding: const EdgeInsetsDirectional.fromSTEB(16, 30, 0, 8),
             child: Text(
               'Siga-nos ',
               style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -255,7 +255,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -335,13 +335,13 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                     return Future<Null>.value(null);
                   },
                 ),
-              ].divide(SizedBox(width: 8)),
+              ].divide(const SizedBox(width: 8)),
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(0, 0),
+            alignment: const AlignmentDirectional(0, 0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 180, 0, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 180, 0, 0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
@@ -349,12 +349,12 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                   width: 200,
                   height: 200,
                   fit: BoxFit.fitWidth,
-                  alignment: Alignment(1, 0),
+                  alignment: const Alignment(1, 0),
                 ),
               ),
             ),
           ),
-        ].addToEnd(SizedBox(height: 64)),
+        ].addToEnd(const SizedBox(height: 64)),
       ),
     );
   }

@@ -1,0 +1,48 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+
+# Android
+android/.gradle/
+android/app/build/
+android/local.properties
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.generated/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Runner.xcarchive/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcworkspace/xcuserdata/
+ios/Flutter/App.framework
+ios/Flutter/engine/
+ios/Flutter/Generated.xcconfig
+
+# Web
+web/.dart_tool/
+web/.flutter-plugins
+web/.flutter-plugins-dependencies
+web/build/
+
+# Firebase/Configs
+firebase/
+
+# Configurações de IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Outros arquivos do sistema
+.DS_Store
+*.log
+*.swp
+*.lock

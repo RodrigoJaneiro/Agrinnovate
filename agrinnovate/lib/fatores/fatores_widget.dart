@@ -58,7 +58,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
             Container(
               width: double.infinity,
               height: 110,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Color(0xFF3947EF),
@@ -73,7 +73,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               child: Container(
                 width: 100,
                 height: 0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Color(0x00FFFFFF), Colors.white],
                     stops: [0, 1],
@@ -82,7 +82,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -99,9 +99,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                           ),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: const AlignmentDirectional(0, 0),
                           child: FlutterFlowIconButton(
-                              borderColor: Color(0x00FFFFFF),
+                              borderColor: const Color(0x00FFFFFF),
                               borderRadius: 24,
                               borderWidth: 1,
                               buttonSize: 46,
@@ -116,7 +116,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ProfileWidget(),
+                                    builder: (context) => const ProfileWidget(),
                                   ),
                                 );
                               },
@@ -124,14 +124,15 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ProfileWidget(),
+                                    builder: (context) => const ProfileWidget(),
                                   ),
                                 );
                               }),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                         child: Text(
                           'Bem-vindo, ',
                           style: FlutterFlowTheme.of(context)
@@ -145,7 +146,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
                         child: AuthUserStreamWidget(
                           builder: (context) => Text(
                             currentUserDisplayName,
@@ -163,13 +165,13 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                       ),
                       Flexible(
                         child: Align(
-                          alignment: AlignmentDirectional(0.9, 0),
+                          alignment: const AlignmentDirectional(0.9, 0),
                           child: FlutterFlowIconButton(
-                            borderColor: Color(0x00FFFFFF),
+                            borderColor: const Color(0x00FFFFFF),
                             borderRadius: 20,
                             borderWidth: 1,
                             buttonSize: 40,
-                            fillColor: Color(0x00FFFFFF),
+                            fillColor: const Color(0x00FFFFFF),
                             icon: FaIcon(
                               FontAwesomeIcons.alignJustify,
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -179,7 +181,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MenuWidget(),
+                                  builder: (context) => const MenuWidget(),
                                 ),
                               );
                             },
@@ -187,7 +189,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MenuWidget(),
+                                  builder: (context) => const MenuWidget(),
                                 ),
                               );
                             },
@@ -201,7 +203,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
             ),
             Flexible(
               child: Align(
-                alignment: AlignmentDirectional(-0.9, 0),
+                alignment: const AlignmentDirectional(-0.9, 0),
                 child: Text(
                   'Fatores',
                   textAlign: TextAlign.start,
@@ -218,18 +220,18 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               stream: ref.onValue,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
                 if (snapshot.hasError) {
                   return Center(child: Text('Erro: ${snapshot.error}'));
                 }
                 if (!snapshot.hasData || snapshot.data == null) {
-                  return Center(child: Text('Sem dados'));
+                  return const Center(child: Text('Sem dados'));
                 }
 
                 var dataSnapshot = snapshot.data!.snapshot;
                 if (!dataSnapshot.exists) {
-                  return Center(child: Text('Sem dados'));
+                  return const Center(child: Text('Sem dados'));
                 }
 
                 var data = dataSnapshot.value as Map<dynamic, dynamic>;
@@ -238,7 +240,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                 int luminosidade = data["Luminosidade"];
 
                 return Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                   child: Material(
                     color: Colors.transparent,
                     elevation: 1,
@@ -252,11 +254,11 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: Color(0xFFE0E3E7),
+                          color: const Color(0xFFE0E3E7),
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,8 +274,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                   ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 12, 0, 0),
                               child: Container(
                                 width: double.infinity,
                                 height: 100,
@@ -288,12 +290,12 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24, 0, 24, 0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 16, 0),
                                         child: FaIcon(
@@ -327,9 +329,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 4, 4, 0),
+                                                            0, 4, 4, 0),
                                                     child: Text(
                                                       '$temperaturaºC',
                                                       style: FlutterFlowTheme
@@ -372,8 +374,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 12, 0, 0),
                               child: Container(
                                 width: double.infinity,
                                 height: 100,
@@ -388,12 +390,12 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24, 0, 24, 0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 16, 0),
                                         child: Icon(
@@ -427,9 +429,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 4, 4, 0),
+                                                            0, 4, 4, 0),
                                                     child: Text(
                                                       '$humidade%',
                                                       style: FlutterFlowTheme
@@ -476,7 +478,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               },
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 1,
@@ -490,11 +492,11 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Color(0xFFE0E3E7),
+                      color: const Color(0xFFE0E3E7),
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -510,7 +512,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: Container(
                             width: double.infinity,
                             height: 100,
@@ -524,12 +527,12 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24, 0, 24, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 16, 0),
                                     child: Icon(
@@ -543,7 +546,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                       builder: (context, snapshot) {
                                         if (snapshot.connectionState ==
                                             ConnectionState.waiting) {
-                                          return Center(
+                                          return const Center(
                                               child:
                                                   CircularProgressIndicator());
                                         }
@@ -554,14 +557,14 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                         }
                                         if (!snapshot.hasData ||
                                             snapshot.data == null) {
-                                          return Center(
+                                          return const Center(
                                               child: Text('Sem dados'));
                                         }
 
                                         var dataSnapshot =
                                             snapshot.data!.snapshot;
                                         if (!dataSnapshot.exists) {
-                                          return Center(
+                                          return const Center(
                                               child: Text('Sem dados'));
                                         }
 
@@ -594,11 +597,11 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0, 4, 4, 0),
+                                                              0, 4, 4, 0),
                                                       child: Text(
-                                                        '$humidadeSolo',
+                                                        humidadeSolo,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .displaySmall
@@ -638,7 +641,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 1,
@@ -652,11 +655,11 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Color(0xFFE0E3E7),
+                      color: const Color(0xFFE0E3E7),
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -676,7 +679,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
-                                return Center(
+                                return const Center(
                                     child: CircularProgressIndicator());
                               }
                               if (snapshot.hasError) {
@@ -684,20 +687,20 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                     child: Text('Erro: ${snapshot.error}'));
                               }
                               if (!snapshot.hasData || snapshot.data == null) {
-                                return Center(child: Text('Sem dados'));
+                                return const Center(child: Text('Sem dados'));
                               }
 
                               var dataSnapshot = snapshot.data!.snapshot;
                               if (!dataSnapshot.exists) {
-                                return Center(child: Text('Sem dados'));
+                                return const Center(child: Text('Sem dados'));
                               }
 
                               var data =
                                   dataSnapshot.value as Map<dynamic, dynamic>;
                               int luminosidade = data["Luminosidade"];
                               return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 12, 0, 0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 100,
@@ -712,12 +715,13 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24, 0, 24, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            24, 0, 24, 0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 0, 16, 0),
@@ -752,9 +756,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0, 4, 4, 0),
+                                                              0, 4, 4, 0),
                                                       child: Text(
                                                         '$luminosidade lm',
                                                         style: FlutterFlowTheme
@@ -786,7 +790,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 1,
@@ -800,11 +804,11 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Color(0xFFE0E3E7),
+                      color: const Color(0xFFE0E3E7),
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -820,7 +824,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: Container(
                             width: double.infinity,
                             height: 100,
@@ -834,12 +839,12 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24, 0, 24, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 16, 0),
                                     child: Icon(
@@ -870,8 +875,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 4, 4, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(0, 4, 4, 0),
                                                 child: Text(
                                                   '200 ms',
                                                   style: FlutterFlowTheme.of(
@@ -896,7 +902,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: Container(
                             width: double.infinity,
                             height: 100,
@@ -910,12 +917,12 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24, 0, 24, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 16, 0),
                                     child: Icon(
@@ -946,8 +953,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 4, 4, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(0, 4, 4, 0),
                                                 child: Text(
                                                   '30º',
                                                   style: FlutterFlowTheme.of(
@@ -978,7 +986,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 1,
@@ -992,11 +1000,11 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Color(0xFFE0E3E7),
+                      color: const Color(0xFFE0E3E7),
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1012,7 +1020,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: Container(
                             width: double.infinity,
                             height: 100,
@@ -1026,12 +1035,12 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24, 0, 24, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 16, 0),
                                     child: Icon(
@@ -1062,8 +1071,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 4, 4, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(0, 4, 4, 0),
                                                 child: Text(
                                                   '0.255 mm',
                                                   style: FlutterFlowTheme.of(
@@ -1095,7 +1105,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
             ),
             Flexible(
               child: Align(
-                alignment: AlignmentDirectional(0, 0),
+                alignment: const AlignmentDirectional(0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
@@ -1108,7 +1118,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 1,

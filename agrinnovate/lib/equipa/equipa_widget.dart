@@ -59,13 +59,13 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                   children: [
                     Flexible(
                       child: Align(
-                        alignment: AlignmentDirectional(0, 0),
+                        alignment: const AlignmentDirectional(0, 0),
                         child: FlutterFlowIconButton(
-                          borderColor: Color(0x00FFFFFF),
+                          borderColor: const Color(0x00FFFFFF),
                           borderRadius: 20,
                           borderWidth: 1,
                           buttonSize: 40,
-                          fillColor: Color(0x00FFFFFF),
+                          fillColor: const Color(0x00FFFFFF),
                           icon: Icon(
                             Icons.arrow_back_outlined,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -75,7 +75,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => QuemSomosWidget(),
+                                builder: (context) => const QuemSomosWidget(),
                               ),
                             );
                           },
@@ -83,7 +83,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => QuemSomosWidget(),
+                                builder: (context) => const QuemSomosWidget(),
                               ),
                             );
                           },
@@ -91,9 +91,10 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0, 0),
+                      alignment: const AlignmentDirectional(0, 0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                         child: Text(
                           'A nossa Equipa',
                           style:
@@ -107,15 +108,16 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                     ),
                     Flexible(
                       child: Align(
-                        alignment: AlignmentDirectional(-1, 0),
+                        alignment: const AlignmentDirectional(-1, 0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(40, 5, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(40, 5, 0, 0),
                           child: FlutterFlowIconButton(
-                            borderColor: Color(0x00FFFFFF),
+                            borderColor: const Color(0x00FFFFFF),
                             borderRadius: 20,
                             borderWidth: 1,
                             buttonSize: 40,
-                            fillColor: Color(0x00FFFFFF),
+                            fillColor: const Color(0x00FFFFFF),
                             icon: FaIcon(
                               FontAwesomeIcons.alignJustify,
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -135,12 +137,12 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 3,
                         color: Color(0x20000000),
@@ -153,7 +155,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -173,8 +175,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 0, 0),
                                 child: Text(
                                   'Bernardo Teixeira',
                                   style: FlutterFlowTheme.of(context)
@@ -186,8 +188,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 4, 0, 0),
                                 child: Text(
                                   'Desenvolvedor de Software',
                                   style: FlutterFlowTheme.of(context)
@@ -207,12 +209,12 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 3,
                         color: Color(0x20000000),
@@ -225,7 +227,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -245,8 +247,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 0, 0),
                                 child: Text(
                                   'Rodrigo Janeiro',
                                   style: FlutterFlowTheme.of(context)
@@ -258,8 +260,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 4, 0, 0),
                                 child: Text(
                                   'Engenheiro de Hardware',
                                   style: FlutterFlowTheme.of(context)
@@ -279,12 +281,12 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 3,
                         color: Color(0x20000000),
@@ -297,7 +299,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -317,8 +319,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 0, 0),
                                 child: Text(
                                   'Marta Oliveira',
                                   style: FlutterFlowTheme.of(context)
@@ -330,8 +332,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 4, 0, 0),
                                 child: Text(
                                   'Project Manager',
                                   style: FlutterFlowTheme.of(context)
@@ -351,12 +353,12 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 3,
                         color: Color(0x20000000),
@@ -369,7 +371,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -389,8 +391,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 0, 0),
                                 child: Text(
                                   'Céu André',
                                   style: FlutterFlowTheme.of(context)
@@ -402,8 +404,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 4, 0, 0),
                                 child: Text(
                                   'Marketing Manager',
                                   style: FlutterFlowTheme.of(context)
@@ -423,12 +425,12 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 3,
                         color: Color(0x20000000),
@@ -441,7 +443,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -461,8 +463,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 0, 0),
                                 child: Text(
                                   'Sebastião Dias',
                                   style: FlutterFlowTheme.of(context)
@@ -474,8 +476,8 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 4, 0, 0),
                                 child: Text(
                                   'Business Analyst',
                                   style: FlutterFlowTheme.of(context)
@@ -495,7 +497,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(

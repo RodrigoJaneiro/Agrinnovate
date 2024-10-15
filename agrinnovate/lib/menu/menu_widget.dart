@@ -57,7 +57,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0, 0.6),
+                    alignment: const AlignmentDirectional(0, 0.6),
                     child: Text(
                       'MENU',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -69,19 +69,19 @@ class _MenuWidgetState extends State<MenuWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0, 0),
+                    alignment: const AlignmentDirectional(0, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Flexible(
                           child: Align(
-                            alignment: AlignmentDirectional(0.9, 0.6),
+                            alignment: const AlignmentDirectional(0.9, 0.6),
                             child: FlutterFlowIconButton(
-                              borderColor: Color(0x00FFFFFF),
+                              borderColor: const Color(0x00FFFFFF),
                               borderRadius: 20,
                               borderWidth: 1,
                               buttonSize: 40,
-                              fillColor: Color(0x00FFFFFF),
+                              fillColor: const Color(0x00FFFFFF),
                               icon: FaIcon(
                                 FontAwesomeIcons.alignJustify,
                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -91,7 +91,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FatoresWidget(),
+                                    builder: (context) => const FatoresWidget(),
                                   ),
                                 );
                               },
@@ -99,7 +99,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FatoresWidget(),
+                                    builder: (context) => const FatoresWidget(),
                                   ),
                                 );
                               },
@@ -113,9 +113,9 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: const AlignmentDirectional(0, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12, 40, 12, 20),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 40, 12, 20),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -125,7 +125,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FatoresWidget(),
+                        builder: (context) => const FatoresWidget(),
                       ),
                     );
                   },
@@ -133,7 +133,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     width: 350,
                     height: 80,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Color(0xFF0299B0), Color(0xFF77D55D)],
                         stops: [0, 1],
                         begin: AlignmentDirectional(-1, -1),
@@ -146,13 +146,14 @@ class _MenuWidgetState extends State<MenuWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 16, 0),
                             child: FaIcon(
                               FontAwesomeIcons.cloudSun,
                               color: FlutterFlowTheme.of(context)
@@ -162,7 +163,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -173,12 +174,11 @@ class _MenuWidgetState extends State<MenuWidget> {
                                     children: [
                                       Expanded(
                                         child: Align(
-                                          alignment:
-                                              AlignmentDirectional(-0.4, 0),
+                                          alignment: const AlignmentDirectional(
+                                              -0.4, 0),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 4, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 4, 0),
                                             child: Text(
                                               'Fatores',
                                               textAlign: TextAlign.start,
@@ -212,9 +212,9 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: const AlignmentDirectional(0, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12, 20, 12, 20),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 20, 12, 20),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -224,7 +224,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyPdfViewer(),
+                        builder: (context) => const MyPdfViewer(),
                       ),
                     );
                   },
@@ -232,7 +232,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     width: 350,
                     height: 80,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Color(0xFF0299B0), Color(0xFF77D55D)],
                         stops: [0, 1],
                         begin: AlignmentDirectional(-1, -1),
@@ -245,13 +245,14 @@ class _MenuWidgetState extends State<MenuWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 16, 0),
                             child: FaIcon(
                               FontAwesomeIcons.filePdf,
                               color: FlutterFlowTheme.of(context)
@@ -261,7 +262,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -272,12 +273,11 @@ class _MenuWidgetState extends State<MenuWidget> {
                                     children: [
                                       Expanded(
                                         child: Align(
-                                          alignment:
-                                              AlignmentDirectional(-0.4, 0),
+                                          alignment: const AlignmentDirectional(
+                                              -0.4, 0),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 4, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 4, 0),
                                             child: Text(
                                               'Instruções',
                                               style:
@@ -310,9 +310,9 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: const AlignmentDirectional(0, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12, 20, 12, 20),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 20, 12, 20),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -322,7 +322,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ConfiguracoesWidget(),
+                        builder: (context) => const ConfiguracoesWidget(),
                       ),
                     );
                   },
@@ -330,7 +330,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     width: 350,
                     height: 81,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Color(0xFF0299B0), Color(0xFF77D55D)],
                         stops: [0, 1],
                         begin: AlignmentDirectional(-1, -1),
@@ -343,13 +343,14 @@ class _MenuWidgetState extends State<MenuWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 16, 0),
                             child: FaIcon(
                               FontAwesomeIcons.cog,
                               color: FlutterFlowTheme.of(context)
@@ -359,7 +360,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -370,12 +371,11 @@ class _MenuWidgetState extends State<MenuWidget> {
                                     children: [
                                       Expanded(
                                         child: Align(
-                                          alignment:
-                                              AlignmentDirectional(-0.4, 0),
+                                          alignment: const AlignmentDirectional(
+                                              -0.4, 0),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 4, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 4, 0),
                                             child: Text(
                                               'Configurações',
                                               style:
@@ -408,9 +408,9 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: const AlignmentDirectional(0, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12, 20, 12, 20),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 20, 12, 20),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -420,7 +420,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QuemSomosWidget(),
+                        builder: (context) => const QuemSomosWidget(),
                       ),
                     );
                   },
@@ -428,7 +428,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     width: 350,
                     height: 81,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Color(0xFF0299B0), Color(0xFF77D55D)],
                         stops: [0, 1],
                         begin: AlignmentDirectional(-1, -1),
@@ -441,13 +441,14 @@ class _MenuWidgetState extends State<MenuWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 16, 0),
                             child: FaIcon(
                               FontAwesomeIcons.userFriends,
                               color: FlutterFlowTheme.of(context)
@@ -457,7 +458,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -468,12 +469,11 @@ class _MenuWidgetState extends State<MenuWidget> {
                                     children: [
                                       Expanded(
                                         child: Align(
-                                          alignment:
-                                              AlignmentDirectional(-0.4, 0),
+                                          alignment: const AlignmentDirectional(
+                                              -0.4, 0),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 4, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 4, 0),
                                             child: Text(
                                               'Quem Somos?',
                                               style:

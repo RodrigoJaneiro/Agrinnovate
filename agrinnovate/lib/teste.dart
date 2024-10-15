@@ -21,7 +21,7 @@ class _TestePageState extends State<TestePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Teste'),
+        title: const Text('Teste'),
       ),
       body: StreamBuilder(
         stream: ref.onValue,
@@ -31,18 +31,18 @@ class _TestePageState extends State<TestePage> {
             return Center(child: Text('Erro: ${snapshot.error}'));
           }
           if (!snapshot.hasData) {
-            return Center(child: Text('Sem dados'));
+            return const Center(child: Text('Sem dados'));
           }
           var dataSnapshot = snapshot.data!.snapshot;
           if (!dataSnapshot.exists) {
-            return Center(child: Text('Sem dados'));
+            return const Center(child: Text('Sem dados'));
           }
 
           var data = dataSnapshot.value as Map<dynamic, dynamic>;
           double humidade = data["HumidadeAr"];
           double temperatura = data["TemperaturaAr"];
           return Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -148,7 +148,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget>
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => FatoresWidget(),
+                            builder: (context) => const FatoresWidget(),
                           ),
                         );
                       },

@@ -143,7 +143,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FatoresWidget(),
+                              builder: (context) => const FatoresWidget(),
                             ),
                           );
                         },
@@ -151,7 +151,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FatoresWidget(),
+                              builder: (context) => const FatoresWidget(),
                             ),
                           );
                         },
