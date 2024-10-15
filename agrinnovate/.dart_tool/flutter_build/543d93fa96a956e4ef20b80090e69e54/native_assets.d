@@ -1,1 +1,0 @@
- C:\\Users\\rodri\\PROJETOS\\Agrinnovate\\agrinnovate\\.dart_tool\\flutter_build\\543d93fa96a956e4ef20b80090e69e54\\native_assets.yaml: 

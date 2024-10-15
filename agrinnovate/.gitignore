@@ -1,4 +1,4 @@
-# Flutter/Dart-related files
+# Flutter/Dart
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -7,7 +7,12 @@
 .pub/
 build/
 
-# iOS-specific files
+# Android
+android/.gradle/
+android/app/build/
+android/local.properties
+
+# iOS
 ios/Flutter/Flutter.framework
 ios/Flutter/Flutter.podspec
 ios/.generated/
@@ -20,24 +25,23 @@ ios/Flutter/App.framework
 ios/Flutter/engine/
 ios/Flutter/Generated.xcconfig
 
-# Android-specific files
-.android/
-App/build/
-
-# Web-specific files (caso o projeto seja multi-plataforma e suporte web)
+# Web
 web/.dart_tool/
 web/.flutter-plugins
 web/.flutter-plugins-dependencies
 web/build/
 
-# Arquivos de configuração do IDE
+# Firebase/Configs
+firebase/
+
+# Configurações de IDE
 .idea/
 *.iml
 *.ipr
 *.iws
 .vscode/
 
-# Arquivos de sistema
+# Outros arquivos do sistema
 .DS_Store
 *.log
 *.swp
