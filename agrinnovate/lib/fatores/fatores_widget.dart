@@ -219,7 +219,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             StreamBuilder(
-              stream: _databaseService.getDadosByMaquina(),
+              stream: _databaseService.getDadosByMaquina().asStream(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -230,10 +230,9 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                 if (!snapshot.hasData || snapshot.data == null) {
                   return const Center(child: Text('Sem dados'));
                 }
-  debugPrint(snapshot.data!.docs[0]["humidadeAr"].toString());
-                double humidade = snapshot.data!.docs[0]["humidadeAr"];
-                double temperatura = snapshot.data!.docs[0]["temperatura"];
-                double luminosidade = snapshot.data!.docs[0]["luminosidade"];
+                double humidade = snapshot.data!["humidadeAr"];
+                double temperatura = snapshot.data!["temperatura"];
+                double luminosidade = snapshot.data!["luminosidade"];
 
                 return Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
@@ -260,7 +259,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Temperatura e humidade do arssss',
+                              'Temperatura e humidade do ar',
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
@@ -462,6 +461,47 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                       ),
                                     ],
                                   ),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              child: Align(
+                                alignment: const AlignmentDirectional(0, 0),
+                                child: StreamBuilder(
+                                  stream: _databaseService
+                                      .getDadosByMaquina()
+                                      .asStream(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const Center(
+                                          child: CircularProgressIndicator());
+                                    }
+                                    if (snapshot.hasError) {
+                                      return Center(
+                                          child:
+                                              Text('Erro: ${snapshot.error}'));
+                                    }
+                                    if (!snapshot.hasData ||
+                                        snapshot.data == null) {
+                                      return const Center(
+                                          child: Text('Sem dados'));
+                                    }
+
+                                    String dataDados =
+                                        snapshot.data!["dataDados"];
+                                    return Text(
+                                      'Última atualização: $dataDados',
+                                      textAlign: TextAlign.end,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            fontSize: 10,
+                                            letterSpacing: 0,
+                                          ),
+                                    );
+                                  },
                                 ),
                               ),
                             ),

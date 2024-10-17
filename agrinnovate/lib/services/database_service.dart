@@ -20,8 +20,9 @@ class DatabaseService {
     return _dadosRef.snapshots();
   }
 
-  Stream<QuerySnapshot> getDadosByMaquina() {
-    return _dadosRef.where('maquina', isEqualTo: '7157EB2DE6B4').snapshots();
+  Future<DocumentSnapshot> getDadosByMaquina() async{
+    QuerySnapshot querySnapshot = await _dadosRef.where('maquina', isEqualTo: '7157EB2DE6B4').limit(1).get();
+    return querySnapshot.docs.first;
   }
 
   void addDados(Dados dados) async {
