@@ -1,4 +1,4 @@
-package com.mycompany.agrinnovate
+package com.company.agrinnovate
 
 import io.flutter.embedding.android.FlutterActivity
 

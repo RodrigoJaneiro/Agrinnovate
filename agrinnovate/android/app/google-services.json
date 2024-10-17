@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "711371671856",
-    "project_id": "agrinnovate-d31ea",
-    "storage_bucket": "agrinnovate-d31ea.appspot.com"
+    "project_number": "632227813516",
+    "project_id": "agroinnovate-438818",
+    "storage_bucket": "agroinnovate-438818.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:711371671856:android:97dc38227bc570a92360f5",
+        "mobilesdk_app_id": "1:632227813516:android:9b7ee7032635d60bff83a9",
         "android_client_info": {
-          "package_name": "com.mycompany.agrinnovate"
+          "package_name": "com.company.agrinnovate"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCO4suwcbPgmSYyVmecMgpm9NZUhDV-J9U"
+          "current_key": "AIzaSyBxY3D8QcPQBtT5jf_Zo8g_ekLVLmLV2o0"
         }
       ],
       "services": {
