@@ -1,4 +1,5 @@
 import 'package:agrinnovate/index.dart';
+import 'package:agrinnovate/services/database_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '/auth/firebase_auth/auth_util.dart';
@@ -25,6 +26,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
   late FatoresModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  DatabaseService _databaseService = DatabaseService();
   final ref = FirebaseDatabase.instanceFor(
     app: Firebase.app(),
     databaseURL:
@@ -217,7 +219,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             StreamBuilder(
-              stream: ref.onValue,
+              stream: _databaseService.getDadosByMaquina(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -228,16 +230,10 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                 if (!snapshot.hasData || snapshot.data == null) {
                   return const Center(child: Text('Sem dados'));
                 }
-
-                var dataSnapshot = snapshot.data!.snapshot;
-                if (!dataSnapshot.exists) {
-                  return const Center(child: Text('Sem dados'));
-                }
-
-                var data = dataSnapshot.value as Map<dynamic, dynamic>;
-                double humidade = data["HumidadeAr"];
-                double temperatura = data["TemperaturaAr"];
-                int luminosidade = data["Luminosidade"];
+  debugPrint(snapshot.data!.docs[0]["humidadeAr"].toString());
+                double humidade = snapshot.data!.docs[0]["humidadeAr"];
+                double temperatura = snapshot.data!.docs[0]["temperatura"];
+                double luminosidade = snapshot.data!.docs[0]["luminosidade"];
 
                 return Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
@@ -264,7 +260,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Temperatura e humidade do ar',
+                              'Temperatura e humidade do arssss',
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
