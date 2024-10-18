@@ -88,14 +88,12 @@ class DatabaseService {
           String maquinaId = maquinaRef.id;
           debugPrint("MaquinaId: $maquinaId");
 
-
           // Agora buscar os dados da máquina com base no maquinaId e ordenar pelos mais recentes
           QuerySnapshot queryDados = await _dadosRef
               .where("maquina", isEqualTo: maquinaId)
-             
               .limit(1)
               .get();
-          Dados? dados = queryDados.docs.first.data() as Dados?;
+
           if (queryDados.docs.isNotEmpty) {
             // Retornar o último dado encontrado
             return queryDados.docs.first;

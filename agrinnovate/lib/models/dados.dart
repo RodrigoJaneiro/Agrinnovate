@@ -1,9 +1,8 @@
-import 'dart:ffi';
 
 class Dados {
   double temperatura;
   double humidadeAr;
-  double humidadeSolo;
+  String humidadeSolo;
   double luminosidade;
   String maquina;
   String dataDados;
@@ -21,7 +20,7 @@ class Dados {
       : this(
           temperatura: json['temperatura']! as double,
           humidadeAr: json['humidadeAr']! as double,
-          humidadeSolo: json['humidadeSolo']! as double,
+          humidadeSolo: json['humidadeSolo']! as String,
           luminosidade: json['luminosidade']! as double,
           maquina: json['maquina']! as String,
           dataDados: json['dataDados']! as String,
@@ -30,7 +29,7 @@ class Dados {
   Dados copyWith({
     double? temperatura,
     double? humidadeAr,
-    double? humidadeSolo,
+    String? humidadeSolo,
     double? luminosidade,
     String? maquina,
     String? dataDados,
