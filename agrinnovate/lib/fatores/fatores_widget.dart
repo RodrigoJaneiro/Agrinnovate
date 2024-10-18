@@ -219,7 +219,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
               ),
             ),
             StreamBuilder(
-              stream: _databaseService.getDadosByMaquina().asStream(),
+              stream: _databaseService.getUltimoDadoByUtilizador().asStream(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -232,7 +232,6 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                 }
                 double humidade = snapshot.data!["humidadeAr"];
                 double temperatura = snapshot.data!["temperatura"];
-                double luminosidade = snapshot.data!["luminosidade"];
 
                 return Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
