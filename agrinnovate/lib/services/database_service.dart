@@ -67,26 +67,14 @@ class DatabaseService {
           .get();
 
       if (queryUtilizadorMaquina.docs.isNotEmpty) {
-        // Tenta acessar os dados diretamente usando `data()`
-        debugPrint(
-            "idUtilizadorMaquina: ${queryUtilizadorMaquina.docs.first.id}");
-        User? utilizador = queryUser.docs.first.data() as User?;
-        debugPrint(
-            "idUtilizadorMaquinadssddssddssdds: ${utilizador?.display_name}");
-
         // Acessa os dados já convertidos como instância de UtilizadorMaquina
         UtilizadorMaquina? utilizadorMaquina =
             queryUtilizadorMaquina.docs.first.data() as UtilizadorMaquina?;
 
-        debugPrint("queryUtilizadorMaquina data: $utilizadorMaquina");
         if (utilizadorMaquina != null) {
-          // DebugPrint para verificar o conteúdo do docData
-          debugPrint("queryUtilizadorMaquina data: $utilizadorMaquina");
-
           // Extrair o maquinaId do primeiro documento encontrado
           DocumentReference maquinaRef = utilizadorMaquina.maquina;
           String maquinaId = maquinaRef.id;
-          debugPrint("MaquinaId: $maquinaId");
 
           // Agora buscar os dados da máquina com base no maquinaId e ordenar pelos mais recentes
           QuerySnapshot queryDados = await _dadosRef
