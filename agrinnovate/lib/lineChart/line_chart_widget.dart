@@ -30,27 +30,22 @@ class LineChartWidget extends StatelessWidget {
           maxX: maxX, // Limite máximo do eixo X
           minY: minY, // Limite mínimo do eixo Y
           maxY: maxY, // Limite máximo do eixo Y
-          titlesData:
-              LineTitles.getTitleData(), // Padrão para os títulos dos eixos
+          titlesData: const FlTitlesData(
+            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          ),
           gridData: FlGridData(
             show: true,
             getDrawingHorizontalLine: (value) {
               return const FlLine(
                 color: Color(0xff37434d),
-                strokeWidth: 1,
+                strokeWidth: 0.1,
               );
             },
-            drawVerticalLine: true,
-            getDrawingVerticalLine: (value) {
-              return const FlLine(
-                color: Color(0xff37434d),
-                strokeWidth: 1,
-              );
-            },
+            drawVerticalLine: false,
           ),
           borderData: FlBorderData(
-            show: true,
-            border: Border.all(color: const Color(0xff37434d), width: 1),
+            show: false,
           ),
           lineBarsData: [
             LineChartBarData(

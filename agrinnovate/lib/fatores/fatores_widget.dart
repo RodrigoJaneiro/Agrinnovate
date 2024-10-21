@@ -89,7 +89,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                   String humidadeSolo = dados.humidadeSolo;
                   double luminosidade = dados.luminosidade;
                   String dataDados = dados.dataDados;
-        
+
                   return Column(
                     children: [
                       Padding(
@@ -134,7 +134,13 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                GraficoFatorWidget()),
+                                                const GraficoFatorWidget(
+                                                  campo: 'temperatura',
+                                                  minX: 0,
+                                                  maxX: 10,
+                                                  minY: 0,
+                                                  maxY: 50,
+                                                )),
                                       );
                                     },
                                     child: Padding(
@@ -249,103 +255,122 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0, 12, 0, 0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const GraficoFatorWidget(
+                                                  campo: 'humidadeAr',
+                                                  minY: 0,
+                                                  maxY: 100,
+                                                  maxX: 10,
+                                                  minX: 0,
+                                                )),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 12, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 100,
+                                        decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2,
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 2,
+                                          ),
                                         ),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional
-                                            .fromSTEB(24, 0, 24, 0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            const Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 16, 0),
-                                              child: Icon(
-                                                Icons.water_drop_outlined,
-                                                color: Color(0xFF20B829),
-                                                size: 32,
+                                        child: Padding(
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(24, 0, 24, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 16, 0),
+                                                child: Icon(
+                                                  Icons.water_drop_outlined,
+                                                  color: Color(0xFF20B829),
+                                                  size: 32,
+                                                ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'Humidade do ar',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0,
-                                                        ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                  0, 4, 4, 0),
-                                                          child: Text(
-                                                            '$humidade%',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .displaySmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
-                                                                  letterSpacing:
-                                                                      0,
-                                                                ),
+                                              Expanded(
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Humidade do ar',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0,
+                                                          ),
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0, 4, 4, 0),
+                                                            child: Text(
+                                                              '$humidade%',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .displaySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Plus Jakarta Sans',
+                                                                    letterSpacing:
+                                                                        0,
+                                                                  ),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      Text(
-                                                        'Valor ideal\n20-60%',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              letterSpacing: 0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                        Text(
+                                                          'Valor ideal\n20-60%',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                letterSpacing:
+                                                                    0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
