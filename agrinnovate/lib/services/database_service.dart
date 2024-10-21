@@ -3,7 +3,6 @@ import 'package:agrinnovate/models/dados.dart';
 import 'package:agrinnovate/models/users.dart';
 import 'package:agrinnovate/models/utilizador_maquina.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 const String DADOS_COLLECTON_REF = "dados";
 const String UTILIZADORMAQUINA_COLLECTON_REF = "utilizadorMaquina";
@@ -52,45 +51,53 @@ class DatabaseService {
   }
 
   Future<DocumentSnapshot?> getUltimoDadoByUtilizador() async {
-    // Busca o documento do utilizador com base no UID
-    QuerySnapshot queryUser = await _utilizadorRef
-        .where("uid", isEqualTo: currentUserUid)
-        .limit(1)
-        .get();
+    Stream<QuerySnapshot> dados = getDadosByUtilizador();
+    QuerySnapshot querySnapshot = await dados.first;
 
-    if (queryUser.docs.isNotEmpty) {
-      // Certifique-se de que o _utilizadorMaquinaRef esteja corretamente tipado
-      // Busca o documento da coleção utilizadorMaquina com base no utilizador logado
-      QuerySnapshot queryUtilizadorMaquina = await _utilizadorMaquinaRef
-          .where("utilizador", isEqualTo: queryUser.docs.first.reference)
-          .limit(1)
-          .get();
-
-      if (queryUtilizadorMaquina.docs.isNotEmpty) {
-        // Acessa os dados já convertidos como instância de UtilizadorMaquina
-        UtilizadorMaquina? utilizadorMaquina =
-            queryUtilizadorMaquina.docs.first.data() as UtilizadorMaquina?;
-
-        if (utilizadorMaquina != null) {
-          // Extrair o maquinaId do primeiro documento encontrado
-          DocumentReference maquinaRef = utilizadorMaquina.maquina;
-          String maquinaId = maquinaRef.id;
-
-          // Agora buscar os dados da máquina com base no maquinaId e ordenar pelos mais recentes
-          QuerySnapshot queryDados = await _dadosRef
-              .where("maquina", isEqualTo: maquinaId)
-              .limit(1)
-              .get();
-
-          if (queryDados.docs.isNotEmpty) {
-            // Retornar o último dado encontrado
-            return queryDados.docs.first;
-          }
-        }
-      }
+    if (querySnapshot.docs.isNotEmpty) {
+      return querySnapshot.docs.last;
     }
 
-    return null; // Retorna null se nenhum dado for encontrado
+    return null;
+  }
+
+  Stream<QuerySnapshot> getDadosByUtilizador() {
+    // Busca o documento do utilizador com base no UID
+    return _utilizadorRef
+        .where("uid", isEqualTo: currentUserUid)
+        .limit(1)
+        .snapshots()
+        .asyncExpand((queryUser) {
+      if (queryUser.docs.isNotEmpty) {
+        // Busca o documento da coleção utilizadorMaquina com base no utilizador logado
+        return _utilizadorMaquinaRef
+            .where("utilizador", isEqualTo: queryUser.docs.first.reference)
+            .limit(1)
+            .snapshots()
+            .asyncExpand((queryUtilizadorMaquina) {
+          if (queryUtilizadorMaquina.docs.isNotEmpty) {
+            // Acessa os dados já convertidos como instância de UtilizadorMaquina
+            UtilizadorMaquina? utilizadorMaquina =
+                queryUtilizadorMaquina.docs.first.data() as UtilizadorMaquina?;
+
+            if (utilizadorMaquina != null) {
+              // Extrair o maquinaId do primeiro documento encontrado
+              DocumentReference maquinaRef = utilizadorMaquina.maquina;
+              String maquinaId = maquinaRef.id;
+
+              // Retornar um stream de dados da máquina
+              return _dadosRef
+                  .where("maquina", isEqualTo: maquinaId)
+                  .snapshots(); // retorna o Stream<QuerySnapshot>
+            }
+          }
+          // Retorna um stream vazio caso não encontre dados em UtilizadorMaquina
+          return null;
+        });
+      }
+      // Retorna um stream vazio caso não encontre dados em Utilizador
+      return null;
+    });
   }
 
   void addDados(Dados dados) async {

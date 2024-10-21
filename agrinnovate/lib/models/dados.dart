@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Dados {
   double temperatura;
@@ -41,6 +42,11 @@ class Dados {
         luminosidade: luminosidade ?? this.luminosidade,
         maquina: maquina ?? this.maquina,
         dataDados: dataDados ?? this.dataDados);
+  }
+
+  factory Dados.fromSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data() as Dados;
+    return data;
   }
 
   Map<String, Object?> toJson() {
