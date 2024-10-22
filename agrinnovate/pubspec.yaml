@@ -100,7 +100,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/Imagem_WhatsApp_2023-10-08_s_14.42.32_39dceb35-removebg-preview-transformed_(1).png"
+  image_path: "assets/images/agrinnovatelogo.png"
   
 flutter_test:
   sdk: flutter
