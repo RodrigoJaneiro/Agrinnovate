@@ -180,13 +180,12 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                         dataPoints: dataPoints,
                         minX: widget.minX,
                         maxX:
-                            _maxX, // Atualiza de acordo com o período selecionado
+                            _maxX, 
                         minY: widget.minY,
                         maxY: widget.maxY,
                       ),
                     ),
                   ),
-                  // Linha com os botões dia, semana, mes
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Row(
