@@ -51,7 +51,7 @@ class DatabaseService {
   }
 
   Future<DocumentSnapshot?> getUltimoDadoByUtilizador() async {
-    Stream<QuerySnapshot> dados = getDadosByUtilizador();
+    Stream<QuerySnapshot> dados = getDadosByUtilizadorAllTime();
     QuerySnapshot querySnapshot = await dados.first;
 
     if (querySnapshot.docs.isNotEmpty) {
@@ -61,7 +61,7 @@ class DatabaseService {
     return null;
   }
 
-  Stream<QuerySnapshot> getDadosByUtilizador() {
+  Stream<QuerySnapshot> getDadosByUtilizadorAllTime() {
     // Busca o documento do utilizador com base no UID
     return _utilizadorRef
         .where("uid", isEqualTo: currentUserUid)
@@ -88,6 +88,48 @@ class DatabaseService {
               // Retornar um stream de dados da máquina
               return _dadosRef
                   .where("maquina", isEqualTo: maquinaId)
+                  .snapshots(); // retorna o Stream<QuerySnapshot>
+            }
+          }
+          // Retorna um stream vazio caso não encontre dados em UtilizadorMaquina
+          return null;
+        });
+      }
+      // Retorna um stream vazio caso não encontre dados em Utilizador
+      return null;
+    });
+  }
+
+  Stream<QuerySnapshot> getDadosByUtilizadorLast30Days() {
+    // Busca o documento do utilizador com base no UID
+    return _utilizadorRef
+        .where("uid", isEqualTo: currentUserUid)
+        .limit(1)
+        .snapshots()
+        .asyncExpand((queryUser) {
+      if (queryUser.docs.isNotEmpty) {
+        // Busca o documento da coleção utilizadorMaquina com base no utilizador logado
+        return _utilizadorMaquinaRef
+            .where("utilizador", isEqualTo: queryUser.docs.first.reference)
+            .limit(1)
+            .snapshots()
+            .asyncExpand((queryUtilizadorMaquina) {
+          if (queryUtilizadorMaquina.docs.isNotEmpty) {
+            // Acessa os dados já convertidos como instância de UtilizadorMaquina
+            UtilizadorMaquina? utilizadorMaquina =
+                queryUtilizadorMaquina.docs.first.data() as UtilizadorMaquina?;
+
+            if (utilizadorMaquina != null) {
+              // Extrair o maquinaId do primeiro documento encontrado
+              DocumentReference maquinaRef = utilizadorMaquina.maquina;
+              String maquinaId = maquinaRef.id;
+
+              // Retornar um stream de dados da máquina
+              return _dadosRef
+                  .where("maquina", isEqualTo: maquinaId)
+                  .where("dataDados",
+                      isGreaterThan:
+                          DateTime.now().subtract(Duration(days: 30)))
                   .snapshots(); // retorna o Stream<QuerySnapshot>
             }
           }

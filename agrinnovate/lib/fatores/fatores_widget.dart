@@ -1,18 +1,11 @@
 import 'package:agrinnovate/fatores/grafico_fator_widget.dart';
 import 'package:agrinnovate/extra/cabecalho_widget.dart';
-import 'package:agrinnovate/index.dart';
 import 'package:agrinnovate/models/dados.dart';
 import 'package:agrinnovate/services/database_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import '/auth/firebase_auth/auth_util.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'fatores_model.dart';
-export 'fatores_model.dart';
 
 class FatoresWidget extends StatefulWidget {
   const FatoresWidget({super.key});
@@ -140,6 +133,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                   maxX: 10,
                                                   minY: 0,
                                                   maxY: 50,
+                                                  titulo: 'Temperatura',
                                                 )),
                                       );
                                     },
@@ -267,6 +261,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                   maxY: 100,
                                                   maxX: 10,
                                                   minX: 0,
+                                                  titulo: 'Humidade do Ar',
                                                 )),
                                       );
                                     },
