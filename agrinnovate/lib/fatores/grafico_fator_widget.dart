@@ -100,23 +100,99 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
             return Dados.fromSnapshot(doc);
           }).toList();
 
-          List<Dados> listaDeDados = listaDeDadosTmp.where((d) {
-            switch (_periodoSelecionado) {
-              case 'dia':
-                return d.dataDados == '1';
-              case 'semana':
-                return d.dataDados == '2';
-              case 'mes':
-                return d.dataDados != '-1';
-              default:
-                return false;
-            }
-          }).toList();
+          listaDeDadosTmp.sort((a, b) {
+            DateFormat format = DateFormat("dd-MM-yyyy HH:mm:ss");
+            DateTime dataA = format.parse(a.dataDados);
+            DateTime dataB = format.parse(b.dataDados);
+
+            return dataA.compareTo(dataB);
+          });
+
+          List<Dados> listaDeDados = [];
+
+          switch (_periodoSelecionado) {
+            case 'dia':
+              listaDeDados = listaDeDadosTmp.where((d) {
+                DateFormat format = DateFormat("dd-MM-yyyy HH:mm:ss");
+                DateTime dataDados = format.parse(d.dataDados);
+
+                return dataDados.isAfter(
+                    DateTime.now().subtract(const Duration(hours: 10)));
+              }).toList();
+              break;
+            case 'semana':
+            case 'mes':
+              List<Dados> listaDeDadosAgrugadoPorDia = [];
+
+              Map<String, List<Dados>> dadosPorDia = {};
+
+              for (var dados in listaDeDadosTmp) {
+                DateFormat format = DateFormat("dd-MM-yyyy HH:mm:ss");
+                DateTime dataDados = format.parse(dados.dataDados);
+                String dia = DateFormat("dd-MM-yyyy").format(dataDados);
+
+                if (!dadosPorDia.containsKey(dia)) {
+                  dadosPorDia[dia] = [];
+                }
+                dadosPorDia[dia]!.add(dados);
+              }
+
+              dadosPorDia.forEach((dia, dadosList) {
+                int somaTemperatura = 0;
+                int somaHumidadeAr = 0;
+                int somaLuminosidade = 0;
+
+                for (var dados in dadosList) {
+                  somaTemperatura += dados.temperatura;
+                  somaHumidadeAr += dados.humidadeAr;
+                  somaLuminosidade += dados.luminosidade;
+                }
+
+                int mediaTemperatura =
+                    (somaTemperatura / dadosList.length).round();
+                int mediaHumidadeAr =
+                    (somaHumidadeAr / dadosList.length).round();
+                int mediaLuminosidade =
+                    (somaLuminosidade / dadosList.length).round();
+
+                listaDeDadosAgrugadoPorDia.add(Dados(
+                  dataDados: dia,
+                  temperatura: mediaTemperatura,
+                  humidadeAr: mediaHumidadeAr,
+                  luminosidade: mediaLuminosidade,
+                  humidadeSolo: '',
+                  maquina: listaDeDadosTmp.first.maquina,
+                ));
+              });
+
+              listaDeDados = listaDeDadosAgrugadoPorDia.where((d) {
+                DateFormat format = DateFormat("dd-MM-yyyy");
+                DateTime dataDados = format.parse(d.dataDados);
+
+                switch (_periodoSelecionado) {
+                  case 'dia':
+                    return dataDados.isAfter(
+                        DateTime.now().subtract(const Duration(hours: 10)));
+                  case 'semana':
+                    return dataDados.isAfter(
+                        DateTime.now().subtract(const Duration(days: 7)));
+                  case 'mes':
+                    return dataDados.isAfter(
+                        DateTime.now().subtract(const Duration(days: 30)));
+                  default:
+                    return false;
+                }
+              }).toList();
+              break;
+
+            default:
+              listaDeDados = listaDeDadosTmp;
+          }
 
           List<FlSpot> dataPoints = listaDeDados.asMap().entries.map((entry) {
             int index = entry.key;
             Dados dados = entry.value;
-            double valorCampo = 0;
+            int valorCampo = 0;
 
             switch (widget.campo) {
               case 'temperatura':
@@ -132,7 +208,7 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
             }
             return FlSpot(
               index.toDouble(),
-              valorCampo,
+              valorCampo.toDouble(),
             );
           }).toList();
 
@@ -151,7 +227,8 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                     child: Row(
                       children: [
                         IconButton(
-                          icon: Icon(Icons.arrow_back, color: Colors.black),
+                          icon:
+                              const Icon(Icons.arrow_back, color: Colors.black),
                           onPressed: () {
                             Navigator.pop(
                                 context); // Volta para a página anterior
@@ -179,8 +256,7 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                       child: LineChartWidget(
                         dataPoints: dataPoints,
                         minX: widget.minX,
-                        maxX:
-                            _maxX, 
+                        maxX: _maxX,
                         minY: widget.minY,
                         maxY: widget.maxY,
                       ),
