@@ -1,5 +1,6 @@
 import 'package:agrinnovate/configuracoes/configuracoes_widget.dart';
 import 'package:agrinnovate/index.dart';
+import 'package:agrinnovate/meteorologia/meteorologia_widget.dart';
 import 'package:agrinnovate/pdf/pdf_widget.dart';
 import 'package:agrinnovate/teste.dart';
 
@@ -224,7 +225,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const FatoresWidget(),
+                        builder: (context) => const MeteorologiaWidget(),
                       ),
                     );
                   },

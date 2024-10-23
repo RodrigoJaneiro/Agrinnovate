@@ -3,6 +3,8 @@ import 'package:agrinnovate/models/dados.dart';
 import 'package:agrinnovate/models/users.dart';
 import 'package:agrinnovate/models/utilizador_maquina.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 const String DADOS_COLLECTON_REF = "dados";
 const String UTILIZADORMAQUINA_COLLECTON_REF = "utilizadorMaquina";
@@ -152,5 +154,45 @@ class DatabaseService {
 
   void deleteDados(String dadosId) {
     _dadosRef.doc(dadosId).delete();
+  }
+
+  // Função que faz a requisição e retorna os valores de idWeatherType, tMin e tMax
+  Future<List<Map<String, dynamic>>> getMetrologia() async {
+    const String url =
+        'https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1010500.json';
+
+    try {
+      // Fazendo a requisição GET
+      final response = await http.get(Uri.parse(url));
+
+      // Verifica se a requisição foi bem-sucedida
+      if (response.statusCode == 200) {
+        // Faz o parse da resposta em JSON
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+
+        // Acessa a lista de previsões dentro do campo 'data'
+        final List<dynamic> forecastData = jsonData['data'];
+
+        // Cria uma lista de mapas para armazenar os valores de idWeatherType, tMin e tMax
+        List<Map<String, dynamic>> weatherDetails = [];
+
+        // Percorre cada previsão e extrai os valores necessários
+        for (var forecast in forecastData) {
+          weatherDetails.add({
+            'idWeatherType': forecast['idWeatherType'],
+            'tMin': forecast['tMin'],
+            'tMax': forecast['tMax'],
+          });
+        }
+
+        return weatherDetails;
+      } else {
+        // Caso a requisição falhe, retornar uma lista vazia
+        return [];
+      }
+    } catch (e) {
+      // Em caso de erro na requisição, retornar uma lista vazia
+      return [];
+    }
   }
 }
