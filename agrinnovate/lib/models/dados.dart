@@ -1,10 +1,11 @@
+import 'package:agrinnovate/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Dados {
-  double temperatura;
-  double humidadeAr;
+  int temperatura;
+  int humidadeAr;
   String humidadeSolo;
-  double luminosidade;
+  int luminosidade;
   String maquina;
   String dataDados;
 
@@ -19,19 +20,19 @@ class Dados {
 
   Dados.fromJson(Map<String, Object?> json)
       : this(
-          temperatura: json['temperatura']! as double,
-          humidadeAr: json['humidadeAr']! as double,
+          temperatura: json['temperatura']! as int,
+          humidadeAr: json['humidadeAr']! as int,
           humidadeSolo: json['humidadeSolo']! as String,
-          luminosidade: json['luminosidade']! as double,
+          luminosidade: json['luminosidade']! as int,
           maquina: json['maquina']! as String,
           dataDados: json['dataDados']! as String,
         );
 
   Dados copyWith({
-    double? temperatura,
-    double? humidadeAr,
+    int? temperatura,
+    int? humidadeAr,
     String? humidadeSolo,
-    double? luminosidade,
+    int? luminosidade,
     String? maquina,
     String? dataDados,
   }) {
@@ -58,5 +59,10 @@ class Dados {
       'maquina': maquina,
       'dataDados': dataDados,
     };
+  }
+
+    DateTime get dataDadosAsDateTime {
+    DateFormat format = DateFormat("dd-MM-yyyy HH:mm:ss");
+    return format.parse(dataDados);
   }
 }

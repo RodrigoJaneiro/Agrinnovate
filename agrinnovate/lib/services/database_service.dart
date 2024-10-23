@@ -57,7 +57,7 @@ class DatabaseService {
     QuerySnapshot querySnapshot = await dados.first;
 
     if (querySnapshot.docs.isNotEmpty) {
-      return querySnapshot.docs.last;
+      return querySnapshot.docs.first;
     }
 
     return null;
@@ -132,7 +132,7 @@ class DatabaseService {
                   .where("dataDados",
                       isGreaterThan:
                           DateTime.now().subtract(Duration(days: 30)))
-                  .snapshots(); // retorna o Stream<QuerySnapshot>
+                  .snapshots(); 
             }
           }
           // Retorna um stream vazio caso não encontre dados em UtilizadorMaquina

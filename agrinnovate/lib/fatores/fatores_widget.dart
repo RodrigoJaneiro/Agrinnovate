@@ -77,10 +77,10 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                   Dados dados = dadosSnapshot.data() as Dados;
 
                   // Acessando as propriedades do objeto `dados`
-                  double humidade = dados.humidadeAr;
-                  double temperatura = dados.temperatura;
+                  int humidade = dados.humidadeAr;
+                  int temperatura = dados.temperatura;
                   String humidadeSolo = dados.humidadeSolo;
-                  double luminosidade = dados.luminosidade;
+                  int luminosidade = dados.luminosidade;
                   String dataDados = dados.dataDados;
 
                   return Column(
