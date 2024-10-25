@@ -184,7 +184,6 @@ class DatabaseService {
             'tMax': forecast['tMax'],
             'precipitaProb': forecast['precipitaProb'],
             'predWindDir': forecast['predWindDir'],
-            'classWindSpeed': forecast['classWindSpeed'],
             'forecastDate': forecast['forecastDate'],
           });
         }
