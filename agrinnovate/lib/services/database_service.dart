@@ -182,6 +182,10 @@ class DatabaseService {
             'idWeatherType': forecast['idWeatherType'],
             'tMin': forecast['tMin'],
             'tMax': forecast['tMax'],
+            'precipitaProb': forecast['precipitaProb'],
+            'predWindDir': forecast['predWindDir'],
+            'classWindSpeed': forecast['classWindSpeed'],
+            'forecastDate': forecast['forecastDate'],
           });
         }
 
