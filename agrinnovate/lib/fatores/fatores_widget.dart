@@ -58,8 +58,8 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                     ),
               ),
             )),
-            FutureBuilder(
-                future: _databaseService.getUltimoDadoByUtilizador(),
+            StreamBuilder(
+                stream: _databaseService.getDadosByUtilizadorAllTime(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
@@ -70,11 +70,18 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                   if (!snapshot.hasData || snapshot.data == null) {
                     return const Center(child: Text('Sem dados'));
                   }
+                  List<Dados> listaDeDadosTmp = snapshot.data!.docs.map((doc) {
+                    return Dados.fromSnapshot(doc);
+                  }).toList();
 
-                  var dadosSnapshot = snapshot.data!;
+                  listaDeDadosTmp.sort((a, b) {
+                    DateFormat format = DateFormat("dd-MM-yyyy HH:mm:ss");
+                    DateTime dataA = format.parse(a.dataDados);
+                    DateTime dataB = format.parse(b.dataDados);
 
-                  // Convertendo os dados do documentSnapshot para o modelo Dados
-                  Dados dados = dadosSnapshot.data() as Dados;
+                    return dataB.compareTo(dataA);
+                  });
+                  Dados dados = listaDeDadosTmp[0];
 
                   // Acessando as propriedades do objeto `dados`
                   int humidade = dados.humidadeAr;
