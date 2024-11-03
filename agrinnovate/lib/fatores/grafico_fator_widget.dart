@@ -8,9 +8,98 @@ import 'package:fl_chart/fl_chart.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 import 'fatores_model.dart';
 export 'fatores_model.dart';
+
+class MetrologiaService {
+  Future<List<Map<String, dynamic>>> getMetrologia() async {
+    const String url =
+        'https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1010500.json';
+
+    try {
+      // Fazendo a requisição GET
+      final response = await http.get(Uri.parse(url));
+
+      // Verifica se a requisição foi bem-sucedida
+      if (response.statusCode == 200) {
+        // Faz o parse da resposta em JSON
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+
+        // Acessa a lista de previsões dentro do campo 'data'
+        final List<dynamic> forecastData = jsonData['data'];
+
+        // Cria uma lista de mapas para armazenar os valores de idWeatherType, tMin e tMax
+        List<Map<String, dynamic>> weatherDetails = [];
+
+        // Percorre cada previsão e extrai os valores necessários
+        for (var forecast in forecastData) {
+          weatherDetails.add({
+            'idWeatherType': forecast['idWeatherType'],
+            'tMin': forecast['tMin'],
+            'tMax': forecast['tMax'],
+            'precipitaProb': forecast['precipitaProb'],
+            'predWindDir': forecast['predWindDir'],
+            'forecastDate': forecast['forecastDate'],
+          });
+        }
+
+        return weatherDetails;
+      } else {
+        // Caso a requisição falhe, retornar uma lista vazia
+        return [];
+      }
+    } catch (e) {
+      // Em caso de erro na requisição, retornar uma lista vazia
+      return [];
+    }
+  }
+}
+
+class TemperaturaMinimaWidget extends StatefulWidget {
+  @override
+  _TemperaturaMinimaWidgetState createState() =>
+      _TemperaturaMinimaWidgetState();
+}
+
+class _TemperaturaMinimaWidgetState extends State<TemperaturaMinimaWidget> {
+  String temperaturaMinima = "Carregando...";
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchTemperaturaMinima();
+  }
+
+  Future<void> _fetchTemperaturaMinima() async {
+    MetrologiaService service = MetrologiaService();
+    List<Map<String, dynamic>> dados = await service.getMetrologia();
+
+    if (dados.isNotEmpty) {
+      setState(() {
+        temperaturaMinima =
+            "A temperatura mínima de hoje é ${dados[0]['tMin']}°C";
+      });
+    } else {
+      setState(() {
+        temperaturaMinima = "Não foi possível carregar a temperatura mínima.";
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        temperaturaMinima,
+        style: TextStyle(fontSize: 20),
+      ),
+    );
+  }
+}
 
 class GraficoFatorWidget extends StatefulWidget {
   const GraficoFatorWidget(
@@ -262,6 +351,7 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                       ),
                     ),
                   ),
+                  TemperaturaMinimaWidget(),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Row(
