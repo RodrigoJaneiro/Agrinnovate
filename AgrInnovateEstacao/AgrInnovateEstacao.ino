@@ -1,20 +1,38 @@
 #include "soc/timer_group_struct.h"
 #include "soc/timer_group_reg.h"
 #include <SPI.h>
+#include <RH_RF95.h>
+#include <RHReliableDatagram.h>
+#include "Adafruit_Si7021.h"
 #include <WiFi.h>
-#include <FirebaseESP32.h>
+#include <Firebase_ESP_Client.h>
+#include <addons/TokenHelper.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>
+#include <TimeLib.h>
 
-#define FIREBASE_HOST "https://teste1-90680-default-rtdb.europe-west1.firebasedatabase.app/"
-#define FIREBASE_AUTH "AIzaSyCL-pSVAdf1s7n1zsfuU6LeS3Jx2qFMQxY"
+#define TINY_GSM_MODEM_SIM7000
 
+// Set serial for debug console (to the Serial Monitor, default speed 115200)
+#define SerialMon Serial
+
+// Your WiFi connection credentials, if applicable
+const char wifiSSID[] = "YourSSID";
+const char wifiPass[] = "YourWiFiPass";
+
+//Hardware pin definitions
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #define WIND_SPD_PIN 35
 #define RAIN_PIN     25
 #define WIND_DIR_PIN 14
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+// Variables and constants used in calculating the windspeed.
 volatile unsigned long timeSinceLastTick = 0;
 bool hasTicked = false;
 volatile unsigned long lastTick = 0;
 
+// Variables and constants used in tracking rainfall
 #define S_IN_DAY   86400
 #define S_IN_HR     3600
 #define NO_RAIN_SAMPLES 2000
@@ -23,56 +41,91 @@ volatile int rainTickIndex = 0;
 volatile int rainTicks = 0;
 int rainLastDay = 0;
 int rainLastHour = 0;
+int rainLastHourStart = 0;
+int rainLastDayStart = 0;
 long secsClock = 0;
 
 String windDir = "";
 float windSpeed = 0.0;
+int weatherCount = 0;
 
-FirebaseData firebaseData;
-hw_timer_t *timer = NULL;
+int id = 0;
+int i_mqtt = 0;
+unsigned long lastDataAttempt = 3600000;
+unsigned long lastReceiveAttempt = 10000;
+unsigned long lastAttemptAttempt = 500;
+unsigned long lastReconnectAttempt = 0;
+unsigned long lastResendAttempt = 0;
+unsigned long lastResetAttempt = 0;
+unsigned long lastAttempt = 0;
+unsigned long lastAttempt_espera = 0;
+unsigned long lastAttemptResend = 0;
+unsigned long lastPingAttempt = 0;
+unsigned long lastWeatherAttempt = 0;
+bool switchLed = true;
 
+bool tokenConfirmed = false;
+
+String fila_de_espera = "";
+String fila_de_espera_mqtt = "";
+int retry = 0;
+String data_broker = "";
+
+uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
+
+hw_timer_t *timer = NULL; //faz o controle do temporizador (interrupção por tempo)
+
+//função que o temporizador irá chamar, para reiniciar o ESP32
 void IRAM_ATTR resetModule() {
-  ets_printf("(watchdog) reiniciar\n");
-  ESP.restart();
+  Serial.println("(watchdog) reiniciar\n"); //imprime no log
+  ESP.restart(); //reinicia o chip
 }
 
 void setup() {
-  Serial.begin(115200);
+  // Set console baud rate
+  SerialMon.begin(115200);
   delay(10);
 
-  timer = timerBegin(0, 80, true);
-  timerAttachInterrupt(timer, &resetModule, true);
+  timer = timerBegin(0, 80, true); //timerID 0, div 80
+  //timer, callback, interrupção de borda
+  timerAttachInterrupt(timer, &resetModule);
+  //timer, tempo (us), repetição
   timerAlarmWrite(timer, 60000000, true);
-  timerAlarmEnable(timer);
+  timerAlarmEnable(timer); //habilita a interrupção
 
-  pinMode(WIND_SPD_PIN, INPUT);
+  // !!!!!!!!!!!
+  // Set your reset, enable, power pins here
+  // !!!!!!!!!!!
+
+  SerialMon.println("Wait...");
+
+ 
+  // Wind speed sensor setup. The windspeed is calculated according to the number
+  //  of ticks per second. Timestamps are captured in the interrupt, and then converted
+  //  into mph. 
+  pinMode(WIND_SPD_PIN, INPUT);     // Wind speed sensor
   attachInterrupt(digitalPinToInterrupt(WIND_SPD_PIN), windTick, RISING);
 
-  pinMode(RAIN_PIN, INPUT);
+  // Rain sesnor setup. Rainfall is tracked by ticks per second, and timestamps of
+  //  ticks are tracked so rainfall can be "aged" (i.e., rain per hour, per day, etc)
+  pinMode(RAIN_PIN, INPUT);     // Rain sensor
   attachInterrupt(digitalPinToInterrupt(RAIN_PIN), rainTick, RISING);
-  
+  // Zero out the timestamp array.
   for (int i = 0; i < NO_RAIN_SAMPLES; i++) rainTickList[i] = 0;
-
-  // Connect to WiFi
-  WiFi.begin("NOS-8E95", "494ZRCKW");
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("WiFi connected");
-
-  // Initialize Firebase
-  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
-  Firebase.reconnectWiFi(true);
 }
 
 void loop() {
   delay(1);
 
   static unsigned long outLoopTimer = 0;
+  static unsigned long wundergroundUpdateTimer = 0;
   static unsigned long clockTimer = 0;
   static unsigned long tempMSClock = 0;
 
+  // Create a seconds clock based on the millis() count. We use this
+  //  to track rainfall by the second. We've done this because the millis()
+  //  count overflows eventually, in a way that makes tracking time stamps
+  //  very difficult.
   tempMSClock += millis() - clockTimer;
   clockTimer = millis();
   while (tempMSClock >= 1000) {
@@ -80,55 +133,108 @@ void loop() {
     tempMSClock -= 1000;
   }
 
-  if (millis() - outLoopTimer >= 2000) {
+  // This is a once-per-second timer that calculates and prints off various
+  //  values from the sensors attached to the system.
+  if (millis() - outLoopTimer >= 2000){
     outLoopTimer = millis();
 
-    Serial.print("\nTimestamp: ");
-    Serial.println(secsClock);
+    SerialMon.print("\nTimestamp: ");
+    SerialMon.println(secsClock);
 
-    if (!hasTicked) {
+    // Windspeed calculation, in mph. timeSinceLastTick gets updated by an
+    //  interrupt when ticks come in from the wind speed sensor.
+    if (!hasTicked){
       windSpeed = 0;
     } else {
-      if (timeSinceLastTick != 0) {
-        windSpeed = 1000.0 / timeSinceLastTick;
+      if (timeSinceLastTick != 0){
+        windSpeed = 1000.0/timeSinceLastTick;
         hasTicked = false;
       }
     }
-    Serial.print("Windspeed: ");
-    Serial.print(windSpeed * 2.4);
-    Serial.println(" km/h");
+    SerialMon.print("Windspeed: ");
+    SerialMon.print(windSpeed*2.4);
+    SerialMon.println(" km/h");
 
-    Serial.print("Wind dir: ");
+    // Calculate the wind direction and display it as a string.
+    SerialMon.print("Wind dir: ");
     windDirCalc(analogRead(WIND_DIR_PIN));
-    Serial.print("  ");
-    Serial.println(windDir);
+    SerialMon.print("  ");
+    SerialMon.println(windDir);
 
-    Serial.print("Rainfall to date: ");
-    Serial.println(float(rainTicks) * 0.2794, 3);
+    // Calculate and display rainfall totals.
+    SerialMon.print("Rainfall last hour: ");
+    SerialMon.println(float(rainLastHour)*0.2794, 3);
+    SerialMon.print("Rainfall last day: ");
+    SerialMon.println(float(rainLastDay)*0.2794, 3);
+    SerialMon.print("Rainfall to date: ");
+    SerialMon.println(float(rainTicks)*0.2794, 3);
+  
+    // Calculate the amount of rain in the last day and hour.
+    rainLastHour = 0;
+    rainLastDay = 0;
+    // If there are any captured rain sensor ticks...
+    if (rainTicks > 0){
+      // Start at the end of the list. rainTickIndex will always be one greater
+      //  than the number of captured samples.
+      int i = rainTickIndex-1;
 
-    // Send data to Firebase
-    Firebase.setFloat(firebaseData, "Weather/WindSpeed", windSpeed * 2.4);
-    Firebase.setString(firebaseData, "Weather/WindDirection", windDir);
-    Firebase.setFloat(firebaseData, "Weather/Rainfall", rainTicks * 0.2794);
+      // Iterate over the list and count up the number of samples that have been
+      //  captured with time stamps in the last hour.
+      while ((rainTickList[i] >= secsClock - S_IN_HR) && rainTickList[i] != 0){
+        i--;
+        if (i < 0) i = NO_RAIN_SAMPLES-1;
+        rainLastHour++;
+      }
 
-    delay(10000);
+      // Repeat the process, this time over days.
+      i = rainTickIndex-1;
+      while ((rainTickList[i] >= secsClock - S_IN_DAY) && rainTickList[i] != 0){
+        i--;
+        if (i < 0) i = NO_RAIN_SAMPLES-1;
+        rainLastDay++;
+      }
+      rainLastDayStart = i;
+    }
   }
+
+  
 }
 
-void windTick(void) {
+String getValue(String data, char separator, int index) {
+  int found = 0;
+  int strIndex[] = { 0, -1 };
+  int maxIndex = data.length() - 1;
+
+  for (int i = 0; i <= maxIndex && found <= index; i++) {
+    if (data.charAt(i) == separator || i == maxIndex) {
+      found++;
+      strIndex[0] = strIndex[1] + 1;
+      strIndex[1] = (i == maxIndex) ? i + 1 : i;
+    }
+  }
+  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
+
+// Keep track of when the last tick came in on the wind sensor.
+void windTick(void){
   timeSinceLastTick = millis() - lastTick;
   lastTick = millis();
   hasTicked = true;
 }
 
-void rainTick(void) {
+// Capture timestamp of when the rain sensor got tripped.
+void rainTick(void){
   rainTickList[rainTickIndex++] = secsClock;
   if (rainTickIndex == NO_RAIN_SAMPLES) rainTickIndex = 0;
   rainTicks++;
 }
 
-void windDirCalc(int vin) {
-  if (vin < 150) windDir = "202.5";
+// For the purposes of this calculation, 0deg is when the wind vane
+//  is pointed at the anemometer. The angle increases in a clockwise
+//  manner from there.
+void windDirCalc(int vin){
+  if      (vin < 150) windDir="202.5";
   else if (vin < 300) windDir = "180";
   else if (vin < 400) windDir = "247.5";
   else if (vin < 600) windDir = "225";
