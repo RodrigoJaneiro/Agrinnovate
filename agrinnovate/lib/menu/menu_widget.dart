@@ -215,7 +215,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             Align(
               alignment: const AlignmentDirectional(0, 0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12, 20, 12, 10),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 10, 12, 10),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -247,7 +247,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                          const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -280,7 +280,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Metreologia',
+                                              'Meteorologia',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -422,104 +422,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ConfiguracoesWidget(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 350,
-                    height: 81,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF0299B0), Color(0xFF77D55D)],
-                        stops: [0, 1],
-                        begin: AlignmentDirectional(-1, -1),
-                        end: AlignmentDirectional(1, 1),
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: FlutterFlowTheme.of(context).alternate,
-                        width: 2,
-                      ),
-                    ),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 16, 0),
-                            child: FaIcon(
-                              FontAwesomeIcons.cog,
-                              color: FlutterFlowTheme.of(context)
-                                  .backgroundComponents,
-                              size: 32,
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Align(
-                                          alignment: const AlignmentDirectional(
-                                              -0.4, 0),
-                                          child: Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 4, 4, 0),
-                                            child: Text(
-                                              'Configurações',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .backgroundComponents,
-                                                        fontSize: 30,
-                                                        letterSpacing: 0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: const AlignmentDirectional(0, 0),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12, 10, 12, 10),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
                         builder: (context) => const QuemSomosWidget(),
                       ),
                     );
@@ -605,7 +507,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
               ),
             ),
-                        /* ClipRRect(
+            /* ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
                 'assets/images/Imagem_WhatsApp_2023-10-08_s_14.42.32_39dceb35-removebg-preview-transformed_(1).png',
