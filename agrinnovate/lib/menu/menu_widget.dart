@@ -477,7 +477,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Configurações',
+                                              'Configurations',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .displaySmall
