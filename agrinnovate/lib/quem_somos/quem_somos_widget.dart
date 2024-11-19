@@ -57,7 +57,7 @@ class _QuemSomosWidgetState extends State<QuemSomosWidget> {
                   Align(
                     alignment: const AlignmentDirectional(0, 0.6),
                     child: Text(
-                      'Quem Somos?',
+                      'About us?',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Outfit',
                             fontSize: 32,
@@ -114,7 +114,7 @@ class _QuemSomosWidgetState extends State<QuemSomosWidget> {
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(15, 50, 15, 0),
                 child: Text(
-                  'Somos um grupo de jovens estudantes que pretendem mudar o mundo da agricultura! Com o nosso kit pretendemos apelar à sustentabilidade e ao aproveitamento da inovação tecnológica no nosso dia a dia!',
+                  'We are a group of young students aiming to revolutionize the world of agriculture! With our kit, we seek to promote sustainability and leverage technological innovation in our daily lives!',
                   textAlign: TextAlign.justify,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -129,7 +129,7 @@ class _QuemSomosWidgetState extends State<QuemSomosWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
               child: Text(
-                'Obrigado por te juntares à Agrinnovate!',
+                'Thank you for joining AgrInnovate!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
                       color: const Color(0xFF2B8C30),
@@ -175,7 +175,7 @@ class _QuemSomosWidgetState extends State<QuemSomosWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
               child: Text(
-                'Consulta aqui  o nosso website para mais informações e para nos contactares!',
+                'Check out our website for more information and to get in touch with us!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
@@ -187,7 +187,7 @@ class _QuemSomosWidgetState extends State<QuemSomosWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(15, 40, 15, 5),
               child: Text(
-                'Conhece a nossa equipa!',
+                'Meet our team!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
@@ -215,7 +215,7 @@ class _QuemSomosWidgetState extends State<QuemSomosWidget> {
                     ),
                   );
                 },
-                text: 'Equipa',
+                text: 'Team',
                 options: FFButtonOptions(
                   height: 40,
                   padding: const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),

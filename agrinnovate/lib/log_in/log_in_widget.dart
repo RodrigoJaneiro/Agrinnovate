@@ -432,7 +432,7 @@ class _LogInWidgetState extends State<LogInWidget>
                           onPressed: () async {
                             context.pushNamed('ForgotPassword');
                           },
-                          text: 'Esqueceu-se da palavra passe?',
+                          text: 'Forgot your password?',
                           options: FFButtonOptions(
                             width: 230.0,
                             height: 44.0,
@@ -477,7 +477,7 @@ class _LogInWidgetState extends State<LogInWidget>
                                 context.pushNamed('SignUp');
                               },
                               child: Text(
-                                'Não tem conta?  Sign up.',
+                                'Don`t have an account?  Sign up.',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium

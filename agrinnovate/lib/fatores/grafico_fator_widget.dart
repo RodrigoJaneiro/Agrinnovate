@@ -274,7 +274,7 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                                 ? Colors.blue
                                 : Colors.grey,
                           ),
-                          child: const Text('10 Horas'),
+                          child: const Text('10 Hours'),
                         ),
                         ElevatedButton(
                           onPressed: () => _atualizarPeriodo('semana'),
@@ -283,7 +283,7 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                                 ? Colors.blue
                                 : Colors.grey,
                           ),
-                          child: const Text('7 Dias'),
+                          child: const Text('7 Days'),
                         ),
                         ElevatedButton(
                           onPressed: () => _atualizarPeriodo('mes'),
@@ -292,7 +292,7 @@ class _GraficoFatorWidgetState extends State<GraficoFatorWidget> {
                                 ? Colors.blue
                                 : Colors.grey,
                           ),
-                          child: const Text('30 Dias'),
+                          child: const Text('30 Days'),
                         ),
                       ],
                     ),

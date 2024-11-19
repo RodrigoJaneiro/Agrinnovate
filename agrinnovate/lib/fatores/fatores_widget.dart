@@ -49,7 +49,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                 child: Align(
               alignment: const AlignmentDirectional(-0.9, 0),
               child: Text(
-                'Fatores',
+                'Factors',
                 style: FlutterFlowTheme.of(context).displaySmall.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
@@ -119,7 +119,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Temperatura e humidade do ar',
+                                    'Air temperature and humidity',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
@@ -188,7 +188,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      'Temperatura',
+                                                      'Temperature',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelMedium
@@ -229,7 +229,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                           ),
                                                         ),
                                                         Text(
-                                                          'Valor ideal\n15-20ºC',
+                                                          'Ideal Value\n15-20ºC',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -315,7 +315,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      'Humidade do ar',
+                                                      'Humidity',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelMedium
@@ -350,7 +350,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                           ),
                                                         ),
                                                         Text(
-                                                          'Valor ideal\n20-60%',
+                                                          'Ideal Value\n20-60%',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -410,7 +410,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Humidade do solo',
+                                    'Soil humidity',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
@@ -460,7 +460,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Humidade do solo',
+                                                    'Soil humidity',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -546,7 +546,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Luminosidade',
+                                    'Light intensity',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
@@ -596,7 +596,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Luminosidade',
+                                                    'Light intensity',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -673,7 +673,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Velocidade e direção do vento',
+                                    'Wind speed and direction',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
@@ -723,7 +723,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Velocidade',
+                                                    'Wind Speed',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -808,7 +808,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Direreção',
+                                                    'Wind direction',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -885,7 +885,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Precipitação',
+                                    'Preciptation',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
@@ -935,7 +935,7 @@ class _FatoresWidgetState extends State<FatoresWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Precipitação',
+                                                    'Preciptation',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium

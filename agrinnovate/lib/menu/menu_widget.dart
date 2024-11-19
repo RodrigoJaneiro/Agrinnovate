@@ -181,7 +181,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Fatores',
+                                              'Factors',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -280,7 +280,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Metreologia',
+                                              'Weather Forecasting',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -291,7 +291,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .backgroundComponents,
-                                                        fontSize: 30,
+                                                        fontSize: 23,
                                                         letterSpacing: 0,
                                                       ),
                                             ),
@@ -379,7 +379,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Instruções',
+                                              'Instuctions',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .displaySmall
@@ -477,7 +477,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Configurações',
+                                              'Settings',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .displaySmall
@@ -575,7 +575,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Quem Somos?',
+                                              'About us?',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .displaySmall
@@ -605,7 +605,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
               ),
             ),
-                        /* ClipRRect(
+            /* ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
                 'assets/images/Imagem_WhatsApp_2023-10-08_s_14.42.32_39dceb35-removebg-preview-transformed_(1).png',

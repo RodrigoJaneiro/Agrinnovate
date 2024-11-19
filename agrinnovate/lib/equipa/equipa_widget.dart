@@ -96,7 +96,7 @@ class _EquipaWidgetState extends State<EquipaWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                         child: Text(
-                          'A nossa Equipa',
+                          'Our Team',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',

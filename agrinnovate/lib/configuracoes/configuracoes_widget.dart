@@ -80,7 +80,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
             child: Text(
-              'Configurações',
+              'Settings',
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily: 'Outfit',
                     letterSpacing: 0,
@@ -119,7 +119,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'A minha subscrição',
+                            'Subscription',
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
@@ -164,7 +164,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Ajuda',
+                          'Help',
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Outfit',
@@ -193,7 +193,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Política de privacidade',
+                          'Privacy policy',
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Outfit',
@@ -222,7 +222,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Termos e condições',
+                          'Terms and conditions',
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Outfit',
@@ -244,7 +244,7 @@ class _ConfiguracoesWidgetState extends State<ConfiguracoesWidget> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16, 30, 0, 8),
             child: Text(
-              'Siga-nos ',
+              'Follow us',
               style: FlutterFlowTheme.of(context).labelMedium.override(
                     fontFamily: 'Readex Pro',
                     letterSpacing: 0,

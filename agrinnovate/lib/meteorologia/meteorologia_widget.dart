@@ -50,7 +50,7 @@ Widget build(BuildContext context) {
             child: Align(
               alignment: AlignmentDirectional(-0.9, 0),
               child: Text(
-                'Meteorologia',
+                'Weather Forecasting',
                 style: FlutterFlowTheme.of(context).displaySmall.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,

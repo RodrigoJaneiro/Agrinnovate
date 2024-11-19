@@ -86,7 +86,7 @@ class CabecalhoWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                   child: Text(
-                    'Bem-vindo, ',
+                    'Welcome, ',
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                           fontFamily: 'Outfit',
                           color: FlutterFlowTheme.of(context).primary,

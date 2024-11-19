@@ -172,7 +172,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 40.0, 0.0, 0.0),
                             child: Text(
-                              'Bem-vindo!',
+                              'Welcome!',
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
@@ -189,7 +189,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 44.0, 8.0, 44.0, 0.0),
                             child: Text(
-                              'Obrigado por aderir!\nComece a sua experiência!',
+                              'Thank you for joining!!\nStart your experience!',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
