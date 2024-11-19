@@ -250,7 +250,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Notification Settings',
+                        'Notificações',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                               fontFamily: 'Readex Pro',
                               letterSpacing: 0.0,
@@ -300,7 +300,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Terms of Services',
+                        'Termos de Serviço',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                               fontFamily: 'Readex Pro',
                               letterSpacing: 0.0,
