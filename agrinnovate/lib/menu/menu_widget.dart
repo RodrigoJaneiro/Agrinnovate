@@ -215,7 +215,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             Align(
               alignment: const AlignmentDirectional(0, 0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12, 20, 12, 10),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 10, 12, 10),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -247,7 +247,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                          const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -477,7 +477,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 4, 0),
                                             child: Text(
-                                              'Settings',
+                                              'Configurações',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .displaySmall
