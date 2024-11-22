@@ -6,6 +6,7 @@
 #include <TimeLib.h>
 #include <Wire.h>
 #include <Adafruit_Si7021.h>
+#include "esp_sleep.h"
 
 // Define WiFi credentials
 #define WIFI_SSID "NOS-8E95"
@@ -33,6 +34,9 @@ NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000); // Fuso horário GMT+
 #define sensorSoloPin 32
 #define LDR_Pin 34
 #define LED_PIN 26  // Define o pino do LED
+
+#define uS_TO_S_FACTOR 1000000  // Conversão de segundos para microsegundos
+#define TIME_TO_SLEEP  300      // Tempo de sono em segundos (5 minutos)
 
 TwoWire myWire = TwoWire(0);
 Adafruit_Si7021 sensor(&myWire);
@@ -105,14 +109,18 @@ void setup() {
 
   // Define the LED pin as output
   pinMode(LED_PIN, OUTPUT);
+
+  // Configurar o tempo de sono profundo
+  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
 }
 
 void loop() {
   // Atualizar sensores e enviar dados para o Firestore
   atualizarSensores();
 
-  // Delay before the next update
-  delay(10000); // Aguarda 10 segundos antes de enviar novamente
+  // Entrar em modo de sono profundo
+  Serial.println("Entrando em modo de sono profundo por 5 minutos...");
+  esp_deep_sleep_start();
 }
 
 void atualizarSensores() {
