@@ -5,7 +5,6 @@
 #include <NTPClient.h>
 #include <TimeLib.h>
 #include <Wire.h>
-#include "esp_sleep.h"
 
 // Define WiFi credentials
 #define WIFI_SSID "NOS-8E95"
@@ -48,25 +47,14 @@ long secsClock = 0;
 String windDir = "";
 float windSpeed = 0.0;
 
-char idStr[17];
-hw_timer_t *timer = NULL;
+const char* idStr = "7157EB2DE6B4";
 
-#define uS_TO_S_FACTOR 1000000  // Conversão de segundos para microsegundos
-#define TIME_TO_SLEEP  300      // Tempo de sono em segundos (5 minutos)
-
-void IRAM_ATTR resetModule() {
-  ets_printf("(watchdog) reiniciar\n");
-  ESP.restart();
-}
+#define uS_TO_S_FACTOR 1000000
+#define TIME_TO_SLEEP 300
 
 void setup() {
   Serial.begin(115200);
   delay(10);
-
-  timer = timerBegin(0, 80, true);
-  timerAttachInterrupt(timer, &resetModule, true);
-  timerAlarmWrite(timer, 60000000, true);
-  timerAlarmEnable(timer);
 
   pinMode(WIND_SPD_PIN, INPUT);
   attachInterrupt(digitalPinToInterrupt(WIND_SPD_PIN), windTick, RISING);
@@ -92,19 +80,12 @@ void setup() {
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 
-  // Get the unique ID of the ESP32
-  uint64_t chipid = ESP.getEfuseMac();
-  sprintf(idStr, "%04X%08X", (uint16_t)(chipid >> 32), (uint32_t)chipid);
-  Serial.print("ID único do ESP32: ");
-  Serial.println(idStr);
-
   // Inicializando o NTP para obter a data e hora
   timeClient.begin();
   while (!timeClient.update()) {
     timeClient.forceUpdate();
   }
 
-  // Configurar o tempo de sono profundo
   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
 }
 
@@ -151,8 +132,7 @@ void loop() {
     // Send data to Firestore
     enviarDadosFirestore(round(windSpeed * 2.4), round(rainTicks * 0.2794), windDir);
 
-    // Entrar em modo de sono profundo
-    Serial.println("Entrando em modo de sono profundo por 5 minutos...");
+    Serial.println("sono profundo");
     esp_deep_sleep_start();
   }
 }
