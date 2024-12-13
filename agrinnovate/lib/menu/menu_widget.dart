@@ -487,7 +487,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .backgroundComponents,
-                                                        fontSize: 32,
+                                                        fontSize: 28,
                                                         letterSpacing: 0,
                                                       ),
                                             ),
