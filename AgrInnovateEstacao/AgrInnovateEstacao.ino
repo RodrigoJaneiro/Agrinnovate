@@ -12,7 +12,7 @@
 
 // Define Firebase API Key, Project ID, and user credentials
 #define API_KEY "AIzaSyCO4suwcbPgmSYyVmecMgpm9NZUhDV-J9U"
-#define FIREBASE_PROJECT_ID "agrinnovate-d31ea"
+#define FIREBASE_PROJECT_ID // our API key
 #define USER_EMAIL "rodrigomtjaneiro@gmail.com"
 #define USER_PASSWORD "Rodrigo1234"
 
